@@ -309,17 +309,16 @@ sidecars: []
 ## ref: https://kubernetes.io/docs/concepts/workloads/pods/init-containers/
 ## e.g:
 initContainers:
-- name: busybox
-  image: busybox
-  imagePullPolicy: Always
-  command: ['sh', '-c', 'mkdir -p /home/themes && wget https://downloads.wordpress.org/theme/kadence.1.1.10.zip && unzip kadence.1.1.10.zip -d /home/themes']
-  #command: ['sh', '-c', 'ls -l && pwd && mkdir -p /home/themes ']
-  volumeMounts:
-  - name: themes
-    mountPath: /home/themes
-volumes:
-  - name: themes
-    emptyDir: {}
+  - name: busybox
+    image: busybox
+    imagePullPolicy: Always
+    command: ['sh', '-c', 'mkdir -p /home/themes && wget https://downloads.wordpress.org/theme/kadence.1.1.10.zip && unzip kadence.1.1.10.zip -d /home/themes']
+    #command: ['sh', '-c', 'ls -l && pwd && mkdir -p /home/themes ']
+    volumeMounts:
+      - mountPath: /bitnami/wordpress
+        name: wordpress-data
+        subPath: wordpress
+
 # initContainers: []
 ## @param podLabels Extra labels for WordPress pods
 ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
