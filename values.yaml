@@ -316,10 +316,10 @@ initContainers:
   - name: busybox
     image: busybox
     imagePullPolicy: Always
-    command: ['sh', '-c', 'mkdir -p /home/themes && wget https://downloads.wordpress.org/theme/kadence.1.1.10.zip && unzip -qo kadence.1.1.10.zip -d /home/themes && ls /home/themes']
+    command: ['sh', '-c', 'wget https://downloads.wordpress.org/theme/kadence.1.1.10.zip && unzip -qo kadence.1.1.10.zip -d /home/wordpress/wp-content/themes && ls /home/wordpress/wp-content/themes']
     volumeMounts:
       - name: wordpress-data
-        mountPath: /home/themes
+        mountPath: /home
     #command: ['sh', '-c', 'ls -l && pwd && mkdir -p /home/themes ']
 
 # initContainers: []
