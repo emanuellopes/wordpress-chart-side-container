@@ -294,10 +294,6 @@ extraVolumeMounts: []
 ##     containerPort: 9090
 ##
 extraContainerPorts: []
-volumes:
-  - name: wordpress-themes
-    hostPath:
-      path: /bitnami/wordpress/wp-content/themes
 ## @param sidecars Add additional sidecar containers to the WordPress pod
 ## e.g:
 ## sidecars:
