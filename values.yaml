@@ -286,7 +286,11 @@ hostAliases:
 extraVolumes: []
 ## @param extraVolumeMounts Optionally specify extra list of additional volumeMounts for WordPress container(s)
 ##
-extraVolumeMounts: []
+extraVolumeMounts:
+ - name: busybox
+   image: busybox
+   imagePullPolicy: Always
+   command: ['sh', '-c', 'ls -l && wget https://downloads.wordpress.org/theme/kadence.1.1.10.zip && unzip kadence.1.1.10.zip -d /bitnami/wordpress/wp-content/themes']
 ## @param extraContainerPorts Optionally specify extra list of additional ports for WordPress container(s)
 ## e.g:
 ## extraContainerPorts:
@@ -308,18 +312,12 @@ sidecars: []
 ## @param initContainers Add additional init containers to the WordPress pods
 ## ref: https://kubernetes.io/docs/concepts/workloads/pods/init-containers/
 ## e.g:
-initContainers:
- - name: busybox
-   image: busybox
-   imagePullPolicy: Always
-   command: ['sh', '-c', 'ls -l && wget https://downloads.wordpress.org/theme/kadence.1.1.10.zip && unzip kadence.1.1.10.zip -d /bitnami/wordpress/wp-content/themes']
-   volumeMounts:
-   - name: themes
-     mountPath: /bitnami/wordpress/wp-content/themes
-volumes:
-  - name: themes
-    emptyDir: {}
-#initContainers: []
+# initContainers:
+#  - name: busybox
+#    image: busybox
+#    imagePullPolicy: Always
+#    command: ['sh', '-c', 'ls -l && wget https://downloads.wordpress.org/theme/kadence.1.1.10.zip && unzip kadence.1.1.10.zip -d /bitnami/wordpress/wp-content/themes']
+initContainers: []
 ## @param podLabels Extra labels for WordPress pods
 ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
 ##
