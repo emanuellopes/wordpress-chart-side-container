@@ -314,9 +314,11 @@ initContainers:
    imagePullPolicy: Always
    command: ['sh', '-c', 'ls -l && wget https://downloads.wordpress.org/theme/kadence.1.1.10.zip && unzip kadence.1.1.10.zip -d /bitnami/wordpress/wp-content/themes']
    volumeMounts:
-    - mountPath: /bitnami/wordpress/wp-content/themes
-      name: themes
-
+   - name: themes
+     mountPath: /bitnami/wordpress/wp-content/themes
+volumes:
+  - name: themes
+    emptyDir: {}
 #initContainers: []
 ## @param podLabels Extra labels for WordPress pods
 ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
