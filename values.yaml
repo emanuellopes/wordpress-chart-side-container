@@ -93,11 +93,11 @@ image:
 
 ## @param wordpressUsername WordPress username
 ##
-wordpressUsername: user
+wordpressUsername: admin
 ## @param wordpressPassword WordPress user password
 ## Defaults to a random 10-character alphanumeric string if not set
 ##
-wordpressPassword: ""
+wordpressPassword: "admin"
 ## @param existingSecret Name of existing secret containing WordPress credentials
 ## NOTE: Must contain key `wordpress-password`
 ## NOTE: When it's set, the `wordpressPassword` parameter is ignored
@@ -198,7 +198,7 @@ smtpProtocol: ""
 smtpExistingSecret: ""
 ## @param allowEmptyPassword Allow the container to be started with blank passwords
 ##
-allowEmptyPassword: true
+allowEmptyPassword: false
 ## @param allowOverrideNone Configure Apache to prohibit overriding directives with htaccess files
 ##
 allowOverrideNone: false
@@ -312,7 +312,7 @@ initContainers:
   - name: busybox
     image: busybox
     imagePullPolicy: Always
-    command: ['sh', '-c', 'mkdir -p /home/themes && wget https://downloads.wordpress.org/theme/kadence.1.1.10.zip && unzip -qo kadence.1.1.10.zip -d /home/themes']
+    command: ['sh', '-c', 'mkdir -p /home/themes && wget https://downloads.wordpress.org/theme/kadence.1.1.10.zip && unzip -qo kadence.1.1.10.zip -d /home/themes && ls /home/themes']
     #command: ['sh', '-c', 'ls -l && pwd && mkdir -p /home/themes ']
     volumeMounts:
       - mountPath: /home/themes
