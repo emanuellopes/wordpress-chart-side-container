@@ -315,7 +315,7 @@ initContainers:
     command: ['sh', '-c', 'mkdir -p /home/themes && wget https://downloads.wordpress.org/theme/kadence.1.1.10.zip && unzip kadence.1.1.10.zip -d /home/themes']
     #command: ['sh', '-c', 'ls -l && pwd && mkdir -p /home/themes ']
     volumeMounts:
-      - mountPath: /bitnami/wordpress
+      - mountPath: /home/themes
         name: wordpress-data
         subPath: wordpress
 
