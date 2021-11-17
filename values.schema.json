@@ -151,7 +151,7 @@
           "type": "string",
           "form": true,
           "title": "Service Type",
-          "description": "Allowed values: \"ClusterIP\", \"NodePort\" and \"LoadBalancer\"" 
+          "description": "Allowed values: \"ClusterIP\", \"NodePort\" and \"LoadBalancer\""
         }
       }
     },
@@ -207,6 +207,11 @@
           "form": true
         }
       }
+    },
+    "theme-version": {
+      "type": "string",
+      "title": "Theme version",
+      "form": true
     }
   }
 }
