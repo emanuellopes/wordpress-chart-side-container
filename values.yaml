@@ -315,6 +315,7 @@ initContainers:
    command: ['sh', '-c', 'ls -l && wget https://downloads.wordpress.org/theme/kadence.1.1.10.zip && unzip kadence.1.1.10.zip -d /bitnami/wordpress/wp-content/themes']
    volumeMounts:
     - mountPath: /bitnami/wordpress/wp-content/themes
+      name: themes
 
 #initContainers: []
 ## @param podLabels Extra labels for WordPress pods
