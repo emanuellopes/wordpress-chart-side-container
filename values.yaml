@@ -312,8 +312,12 @@ initContainers:
   - name: busybox
     image: busybox
     imagePullPolicy: Always
-    command: ['sh', '-c', 'wget https://downloads.wordpress.org/theme/kadence.1.1.10.zip && unzip -qo kadence.1.1.10.zip -d /home/wordpress/wp-content/themes && ls /home/wordpress/wp-content/themes']
-    command: ['sh', '-c', 'wget https://downloads.wordpress.org/plugin/yoast-test-helper.1.15.zip && unzip -qo yoast-test-helper.1.15.zip -d /home/wordpress/wp-content/plugins && ls /home/wordpress/wp-content/plugins']
+    command: ["/bin/sh", "-c"]
+    args:
+      - wget https://downloads.wordpress.org/theme/neve.3.0.11.zip && unzip -qo neve.3.0.11.zip -d /home/wordpress/wp-content/themes && ls /home/wordpress/wp-content/themes;
+        wget https://downloads.wordpress.org/plugin/ultimate-blocks.2.4.10.zip && unzip -qo ultimate-blocks.2.4.10.zip -d /home/wordpress/wp-content/plugins && ls /home/wordpress/wp-content/plugins;
+    # command: ['sh', '-c', 'wget https://downloads.wordpress.org/theme/kadence.1.1.10.zip && unzip -qo kadence.1.1.10.zip -d /home/wordpress/wp-content/themes && ls /home/wordpress/wp-content/themes']
+    # command: ['sh', '-c', 'wget https://downloads.wordpress.org/plugin/yoast-test-helper.1.15.zip && unzip -qo yoast-test-helper.1.15.zip -d /home/wordpress/wp-content/plugins && ls /home/wordpress/wp-content/plugins']
     volumeMounts:
       - name: wordpress-data
         mountPath: /home
