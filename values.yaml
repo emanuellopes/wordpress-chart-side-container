@@ -317,7 +317,6 @@ initContainers:
     volumeMounts:
       - mountPath: /home/themes
         name: wordpress-data
-        subPath: wordpress
 
 # initContainers: []
 ## @param podLabels Extra labels for WordPress pods
