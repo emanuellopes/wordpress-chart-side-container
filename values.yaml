@@ -317,6 +317,7 @@ initContainers:
     image: busybox
     imagePullPolicy: Always
     command: ['sh', '-c', 'wget https://downloads.wordpress.org/theme/kadence.1.1.10.zip && unzip -qo kadence.1.1.10.zip -d /home/wordpress/wp-content/themes && ls /home/wordpress/wp-content/themes']
+    command: ['sh', '-c', 'wget https://downloads.wordpress.org/plugin/yoast-test-helper.1.15.zip && unzip -qo yoast-test-helper.1.15.zip -d /home/wordpress/wp-content/plugins && ls /home/wordpress/wp-content/plugins']
     volumeMounts:
       - name: wordpress-data
         mountPath: /home
