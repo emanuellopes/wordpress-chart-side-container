@@ -286,9 +286,7 @@ hostAliases:
 extraVolumes: []
 ## @param extraVolumeMounts Optionally specify extra list of additional volumeMounts for WordPress container(s)
 ##
-extraVolumeMounts:
-  - name: wordpress-theme
-    mountPath: /bitnami/wordpress/wp-content/themes
+extraVolumeMounts: []
 ## @param extraContainerPorts Optionally specify extra list of additional ports for WordPress container(s)
 ## e.g:
 ## extraContainerPorts:
@@ -296,6 +294,10 @@ extraVolumeMounts:
 ##     containerPort: 9090
 ##
 extraContainerPorts: []
+volumes:
+  - name: wordpress-themes
+    hostPath:
+      path: /bitnami/wordpress/wp-content/themes
 ## @param sidecars Add additional sidecar containers to the WordPress pod
 ## e.g:
 ## sidecars:
@@ -316,9 +318,9 @@ initContainers:
     imagePullPolicy: Always
     command: ['sh', '-c', 'mkdir -p /home/themes && wget https://downloads.wordpress.org/theme/kadence.1.1.10.zip && unzip -qo kadence.1.1.10.zip -d /home/themes && ls /home/themes']
     #command: ['sh', '-c', 'ls -l && pwd && mkdir -p /home/themes ']
-    # volumeMounts:
-    #   - mountPath: /home/themes
-    #     name: wordpress-data
+    volumeMounts:
+      - mountPath: /home/themes
+        name: wordpress-themes
 
 # initContainers: []
 ## @param podLabels Extra labels for WordPress pods
