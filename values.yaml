@@ -177,7 +177,10 @@ existingApacheConfigurationConfigMap: ""
 ##     RewriteBase /
 ##     ...
 ##
-customPostInitScripts: {}
+customPostInitScripts:
+  activate-them.sh: |
+     #!/bin/bash
+     wp plugin deactivate --all
 ## SMTP mail delivery configuration
 ## ref: https://github.com/bitnami/bitnami-docker-wordpress/#smtp-configuration
 ## @param smtpHost SMTP server host
